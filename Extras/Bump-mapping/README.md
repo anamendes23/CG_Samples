@@ -8,8 +8,8 @@ Use bump mapping to make a quadrilateral look like a stone wall - per book's ins
 
 ### Results
 
-![Bump Mapping Stone Wall](/Extras/BumpStone1.JPG)
+![Bump Mapping Stone Wall](/Extras/Bump-mapping/BumpStone1.JPG)
 
-![Bump Mapping Stone Wall](/Extras/BumpStone2.JPG)
+![Bump Mapping Stone Wall](/Extras/Bump-mapping/BumpStone2.JPG)
 
-![Bump Mapping Stone Wall](/Extras/BumpStone3.JPG)
+![Bump Mapping Stone Wall](/Extras/Bump-mapping/BumpStone3.JPG)
