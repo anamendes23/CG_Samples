@@ -14,12 +14,12 @@ Using only a pixel shader, render:
 
 ### Chessboard
 
-![Chessboard](https://myoctocat.com/assets/images/base-octocat.svg)
+![Chessboard](/Assignment_1/Chessboard.JPG)
 
 ### Checkersboard
 
-![Checkersboard](https://myoctocat.com/assets/images/base-octocat.svg)
+![Checkersboard](/Assignment_1/Checkersboard.JPG)
 
 ### Circles
 
-![Circles](https://myoctocat.com/assets/images/base-octocat.svg)
+![Circles](/Assignment_1/Circles.JPG)
