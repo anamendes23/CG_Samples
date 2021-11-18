@@ -1,16 +1,20 @@
-# Assignment 5
+# Final Project
 
-Phong shading and texture.
+Course final project, of student's choice.
 
-## Instructions
+## Goal
 
-Use the animal from Assignment 4, and render it as a solid object in 3 different ways:
-1) applying Phong shading in green color
-2) using texture-mapping of an image
-3) use the same image to use texture-mapping with twice the texture “frequency”.
+Render a realistic looking tree.
+
+Checklist:
+- [x] Write Tree class that generates points based on L-system rules
+- [x] Draw lines using the points generated
+- [ ] Use a Geometry Shader to calculate all the limb’s cylindrical points from the reference frame
+- [ ] Add lighting to the scene
+- [ ] Use bump mapping to add a bark look to the tree
 
 ## Results
 
-### Frogs
+### Stick Tree
 
-![Green frog, chessboard frog](/Assignment_5/FrogShadingAndTexture.JPG)
+![Stick Tree](/Final_Project-WIP/StickTree.png)
