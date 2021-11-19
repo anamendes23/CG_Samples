@@ -19,7 +19,4 @@ competencies:
 
 (h) Shading algorithms
 
-(i) Mapping techniques (bump mapping, environment/reflection mapping, etc.)
-
-(j) Shadows
-
+(i) Mapping techniques (bump mapping)

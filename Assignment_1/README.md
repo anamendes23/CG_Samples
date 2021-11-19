@@ -4,7 +4,7 @@ Introduction to OpenGL, vertex and pixel shaders.
 
 ## Instructions
 
-Using only a pixel shader, render:
+Using a pixel shader and a no-op vertex shader, render:
 
 1) a chess board
 2) a checkers board
