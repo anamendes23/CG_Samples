@@ -18,3 +18,7 @@ Checklist:
 ### Stick Tree
 
 ![Stick Tree](/Final_Project-WIP/StickTree.png)
+
+### Stick tree modified by Geometry Shader
+
+![Geometry Shader Tree](/Final_Project-WIP/GeometryShaderTree.jpg)
