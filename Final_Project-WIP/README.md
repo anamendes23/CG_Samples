@@ -9,7 +9,7 @@ Render a realistic looking tree.
 Checklist:
 - [x] Write Tree class that generates points based on L-system rules
 - [x] Draw lines using the points generated
-- [ ] Use a Geometry Shader to calculate all the limb’s cylindrical points from the reference frame
+- [X] Use a Geometry Shader to calculate all the limb’s cylindrical points from the reference frame
 - [ ] Add lighting to the scene
 - [ ] Use bump mapping to add a bark look to the tree
 
@@ -19,6 +19,18 @@ Checklist:
 
 ![Stick Tree](/Final_Project-WIP/StickTree.png)
 
-### Stick tree modified by Geometry Shader
+### Stick tree modified by Geometry Shader, outputting triangles
 
-![Geometry Shader Tree](/Final_Project-WIP/GeometryShaderTree.jpg)
+![Geometry Shader Tree](/Final_Project-WIP/GeometryShaderTree.JPG)
+
+### Tree modified by Geometry Shader, outputting quads.
+
+![Quad tree](/Final_Project-WIP/ColorGradientTree.png)
+
+### Tree modified by Geometry Shader, outputting quads with high resolution to form cylinder.
+
+![Cylinder tree](/Final_Project-WIP/CylinderLimbsAndNormalColor.png)
+
+### Varying limb radius
+
+![Varying limp radius Tree](/Final_Project-WIP/VaryingRadiusTree.JPG)

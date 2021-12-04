@@ -10,14 +10,22 @@
 #include <cmath>
 #include <stack>
 
-#define M_PI 3.14159265358979323846
+#define M_PI 3.14159f
+#define RADIUS_REDUC 0.013f
+
+struct PointData {
+    vec3 pos;
+    float anglexy;
+    float angleyz;
+    float radius;
+};
 
 Tree::Tree() {
-	this->forwardStep = 0.007;
-	this->xyTurn = 25 * M_PI / 180.0;
-	this->yzTurn = 45 * M_PI / 180.0;
-	this->startxyAngle = M_PI / 2.0;
-	this->startyzAngle = M_PI / 2.0;
+	this->forwardStep = 0.007f;
+	this->xyTurn = 25 * M_PI / 180.0f;
+	this->yzTurn = 45 * M_PI / 180.0f;
+	this->startxyAngle = M_PI / 2.0f;
+	this->startyzAngle = M_PI / 2.0f;
 
 	this->numGenerations = 7;
 
@@ -25,14 +33,16 @@ Tree::Tree() {
     populateRenderQueue();
 }
 
-void Tree::generateTree(std::vector<vec3>& points) {
+void Tree::generateTree(std::vector<vec3>& points, std::vector<float>& radiuses) {
     char renderCommand;
     vec3 currPos = vec3(0, -1, 0);
-    double theta = 0.0;
-    double r = 0.0;
-    double x = 0.0;
-    double y = 0.0;
-    double z = 0.0;
+    float theta = 0.0;
+    float r = 0.0;
+    float x = 0.0;
+    float y = 0.0;
+    float z = 0.0;
+    float currRadius = 0.1f;
+    std::stack<PointData> stack;
     std::stack<vec3> posStack;
     std::stack<double> anglexyStack;
     std::stack<double> angleyzStack;
@@ -45,6 +55,7 @@ void Tree::generateTree(std::vector<vec3>& points) {
         switch (renderCommand) {
         case 'F':
             points.push_back(currPos);
+            radiuses.push_back(currRadius);
 
             theta = atan2(currPos.y, currPos.x);
             x = forwardStep * cos(theta);
@@ -65,7 +76,9 @@ void Tree::generateTree(std::vector<vec3>& points) {
             currPos.x = currPos.x + x;
             currPos.y = currPos.y + y;
             currPos.z = currPos.z + z;
+            //currRadius -= RADIUS_REDUC;
             points.push_back(currPos);
+            radiuses.push_back(currRadius);
 
             //printf("currx: %f | curry: %f\n", currPos.x, currPos.y);
             break;
@@ -80,17 +93,40 @@ void Tree::generateTree(std::vector<vec3>& points) {
             startyzAngle -= yzTurn;
             break;
         case '[':
+        {
+            currRadius -= RADIUS_REDUC;
+            struct PointData p;
+            p.pos = currPos;
+            p.anglexy = startxyAngle;
+            p.angleyz = startyzAngle;
+            p.radius = currRadius;
+            stack.push(p);
+            /*
             posStack.push(currPos);
             anglexyStack.push(startxyAngle);
             angleyzStack.push(startyzAngle);
+            */
+        }
             break;
         case ']':
+        {
+            struct PointData temp;
+            temp = stack.top();
+            stack.pop();
+
+            currPos = temp.pos;
+            startxyAngle = temp.anglexy;
+            startyzAngle = temp.angleyz;
+            currRadius = temp.radius;
+            /*
             currPos = posStack.top();
             posStack.pop();
             startxyAngle = anglexyStack.top();
             anglexyStack.pop();
             startyzAngle = angleyzStack.top();
             angleyzStack.pop();
+            */
+        }
             break;
         case 'X':
             break;
@@ -106,13 +142,13 @@ void Tree::populateRulesVectors(std::string rule1, std::string rule2) {
     this->rulesFrom.push_back('F');
     // rules to
     std::queue<char> queue1;
-    for (int i = 0; i < rule1.length(); i++) {
+    for (unsigned int i = 0; i < rule1.length(); i++) {
         queue1.push(rule1[i]);
     }
     this->rulesTo.push_back(queue1);
 
     std::queue<char> queue2;
-    for (int i = 0; i < rule2.length(); i++) {
+    for (unsigned int i = 0; i < rule2.length(); i++) {
         queue2.push(rule2[i]);
     }
     this->rulesTo.push_back(queue2);
@@ -135,7 +171,7 @@ void Tree::populateRenderQueue() {
             input.pop();
             // look through the from-list to find a rule to invoke
             bool ruleFound = false;
-            for (int i = 0; !ruleFound && i < rulesFrom.size(); i++)
+            for (unsigned int i = 0; !ruleFound && i < rulesFrom.size(); i++)
                 if (rulesFrom[i] == nextInput)
                 {
                     ruleFound = true;

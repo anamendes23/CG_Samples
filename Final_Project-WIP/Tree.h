@@ -17,15 +17,15 @@
 class Tree {
 public:
     Tree();
-    void generateTree(std::vector<vec3> &points);
+    void generateTree(std::vector<vec3> &points, std::vector<float>& radiuses);
 private:
     std::vector<char> rulesFrom;
     std::vector<std::queue<char>> rulesTo;
-    double forwardStep;
-    double xyTurn;
-    double yzTurn;
-    double startxyAngle;
-    double startyzAngle;
+    float forwardStep;
+    float xyTurn;
+    float yzTurn;
+    float startxyAngle;
+    float startyzAngle;
     int numGenerations;
     std::queue<char> renderQueue;
     void populateRulesVectors(std::string rule1, std::string rule2);
