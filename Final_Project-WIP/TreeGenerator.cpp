@@ -203,7 +203,7 @@ void Resize(GLFWwindow* window, int width, int height) {
 
 void Display() {
 	// clear screen to blue
-	glClearColor(0, .4f, .7f, 1);
+	glClearColor(0, .5f, .8f, 1);
 	glClear(GL_COLOR_BUFFER_BIT);
 	// enable z-buffer (needed for tetrahedron)
 	glClear(GL_DEPTH_BUFFER_BIT);

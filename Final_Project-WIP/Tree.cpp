@@ -11,7 +11,7 @@
 #include <stack>
 
 #define M_PI 3.14159f
-#define RADIUS_REDUC 0.013f
+#define RADIUS_REDUC 1.02f
 
 struct PointData {
     vec3 pos;
@@ -76,11 +76,10 @@ void Tree::generateTree(std::vector<vec3>& points, std::vector<float>& radiuses)
             currPos.x = currPos.x + x;
             currPos.y = currPos.y + y;
             currPos.z = currPos.z + z;
-            //currRadius -= RADIUS_REDUC;
+            currRadius /= RADIUS_REDUC;
             points.push_back(currPos);
             radiuses.push_back(currRadius);
 
-            //printf("currx: %f | curry: %f\n", currPos.x, currPos.y);
             break;
 
         case '-':
@@ -94,18 +93,12 @@ void Tree::generateTree(std::vector<vec3>& points, std::vector<float>& radiuses)
             break;
         case '[':
         {
-            currRadius -= RADIUS_REDUC;
             struct PointData p;
             p.pos = currPos;
             p.anglexy = startxyAngle;
             p.angleyz = startyzAngle;
             p.radius = currRadius;
             stack.push(p);
-            /*
-            posStack.push(currPos);
-            anglexyStack.push(startxyAngle);
-            angleyzStack.push(startyzAngle);
-            */
         }
             break;
         case ']':
@@ -118,14 +111,6 @@ void Tree::generateTree(std::vector<vec3>& points, std::vector<float>& radiuses)
             startxyAngle = temp.anglexy;
             startyzAngle = temp.angleyz;
             currRadius = temp.radius;
-            /*
-            currPos = posStack.top();
-            posStack.pop();
-            startxyAngle = anglexyStack.top();
-            anglexyStack.pop();
-            startyzAngle = angleyzStack.top();
-            angleyzStack.pop();
-            */
         }
             break;
         case 'X':

@@ -10,7 +10,7 @@ Checklist:
 - [x] Write Tree class that generates points based on L-system rules
 - [x] Draw lines using the points generated
 - [X] Use a Geometry Shader to calculate all the limb’s cylindrical points from the reference frame
-- [ ] Add lighting to the scene
+- [X] Add lighting to the scene
 - [ ] Use bump mapping to add a bark look to the tree
 
 ## Results
@@ -34,3 +34,15 @@ Checklist:
 ### Varying limb radius
 
 ![Varying limp radius Tree](/Final_Project-WIP/VaryingRadiusTree.JPG)
+
+### Varying limb radius - second iteration
+
+![Varying limp radius Tree](/Final_Project-WIP/SecondIterationRadiusTree.JPG)
+
+### Implemented Phong shading
+
+![Shaded Tree](/Final_Project-WIP/ShadedTree.JPG)
+
+### Testing Phong shading with green gradient
+
+![Green Shaded Tree](/Final_Project-WIP/GreenShaded.JPG)
